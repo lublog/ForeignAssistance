@@ -1,65 +1,62 @@
 # @Time    : 2023/09/28 14:08
 # @Author  : lu yao
 # @FileName: result analysis.py
+# @description: 分析每个国家的SDG, HDI, 经济发展指标, 安全发展指标, 发展-安全综合指数随援助金额的变化趋势, 横坐标为时间, 纵坐标为指标值, 采用折线图进行展示
 
 import streamlit as st
 import share
 import pandas as pd
-import cleaning_data as cd
 import plotly.express as px
 import config
+import plotly.graph_objects as go
 
+# 打开wide模式
+st.set_page_config(layout="wide")
 st.markdown("### 观察每个国家总体发展水平随受援助金额的变化趋势")
 
 country_code, country_name = share.create_country_list()
+st.write(f'你选择的国家是: {country_name}', f'国家代码是: {country_code}')
 
-result = pd.DataFrame(columns=['year', 'Amount', 'SDG', 'HDI', 'economic', 'security', 'composite index'])
+result = pd.read_csv(config.PROJECT_ROOT_URL + "cleaned_data/test_all_chinese.csv")
+result = result[result['受援对象国'] == country_name]
 
-
-'''
-分析每个国家的SDG, HDI, 经济发展指标, 安全发展指标, 发展-安全综合指数
-随援助金额的变化趋势, 横坐标为时间, 纵坐标为指标值, 采用折线图进行展示
-'''
-
-# 选择x轴
+# 年度,受援对象国,受援对象国代码,援助类别,经济援助金额(美元),军事援助金额(美元),总援助金额(美元),SDG,HDI,对象国经济发展指标,对象国安全系数指标,对象国发展-安全综合指数
+# 选择某种指标关于时间的变化趋势(以上是指标的中文名称)
 y_axis = st.selectbox(
     '请选择你想查看的数据',
-    ('SDG', 'Amount', 'HDI', 'economic', 'security', 'composite index')
+    ('SDG', 'HDI', '对象国经济发展指标', '对象国安全系数指标', '对象国发展-安全综合指数')
 )
-
-i = 0
-# 获取指数数据2006-2023
-for year in range(2006, 2022):
-        index = cd.calc_index_of_development_and_security(country_name, country_code, str(year))
-
-        amount = cd.get_amount(country_code, str(year))
-        # 附加year, amount到index元组中
-        value_y = (str(year), amount, index[0], index[1], index[2], index[3], index[4])
-        # 将元组转换为词典
-        value_d = dict(zip(result.columns, value_y))
-        # 将Series追加到result中
-        result.loc[i] = value_d
-        i += 1
-
 
 # 绘制plotly图表
-fig = px.line(
+result_fig = px.line(
     result,
-    x='year',
+    x='年度',
     y=y_axis,
     title=f'{country_name}发展水平随受援助金额的变化趋势',
-    labels={'year': '年份'},
 )
 
-amount_fig = px.bar(
-    result,
-    x='year',
-    y='Amount',
-    title=f'{country_name}受援助金额随时间的变化趋势',
-    labels={'year': '年份'},
+# 将经济援助金额(美元),军事援助金额(美元),总援助金额(美元)
+# 显示在同一个bar图中
+fig = go.Figure()
+fig.add_trace(go.Bar(
+    x=result['年度'],
+    y=result['经济援助金额(美元)'],
+    name='经济援助金额(美元)',
+    marker_color='rgb(55, 83, 109)'
+))
+fig.add_trace(go.Bar(
+    x=result['年度'],
 
-)
+    y=result['军事援助金额(美元)'],
+    name='军事援助金额(美元)',
+    marker_color='rgb(26, 118, 255)'
+))
+fig.add_trace(go.Bar(
+    x=result['年度'],
+    y=result['总援助金额(美元)'],
+    name='总援助金额(美元)',
+    marker_color='rgb(26, 255, 26)'
+))
+
+st.plotly_chart(result_fig)
 st.plotly_chart(fig)
-st.plotly_chart(amount_fig)
-
-

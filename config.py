@@ -3,6 +3,7 @@
 # @FileName: config.py.py
 
 socrata_dataset_identifier = "k87i-9i5x"
+socrata_all_dataset_identifier = "azij-hu6e"
 
 PROJECT_ROOT_URL = "/Users/luyao/PycharmProjects/ForeignAssistance/"
 

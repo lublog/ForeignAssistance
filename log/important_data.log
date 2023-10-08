@@ -1,0 +1,83 @@
+2023-10-07 11:39:28,206 - data_cleaning - INFO - FSI:
+2023-10-07 11:39:28,210 - data_cleaning - INFO - country_name    string[python]
+year                     Int64
+fsi_index              Float64
+dtype: object
+2023-10-07 11:39:29,978 - data_cleaning - INFO - HDI:
+2023-10-07 11:39:29,979 - data_cleaning - INFO - country_code    string[python]
+country_name    string[python]
+hdi_2006               Float64
+hdi_2007               Float64
+hdi_2008               Float64
+hdi_2009               Float64
+hdi_2010               Float64
+hdi_2011               Float64
+hdi_2012               Float64
+hdi_2013               Float64
+hdi_2014               Float64
+hdi_2015               Float64
+hdi_2016               Float64
+hdi_2017               Float64
+hdi_2018               Float64
+hdi_2019               Float64
+hdi_2020               Float64
+hdi_2021               Float64
+dtype: object
+2023-10-07 11:39:31,291 - data_cleaning - INFO - SDG:
+2023-10-07 11:39:31,291 - data_cleaning - INFO - country_code    string[python]
+country_name    string[python]
+year                     Int64
+sdg_index              Float64
+dtype: object
+2023-10-07 11:42:43,798 - data_cleaning - INFO - fsi
+2023-10-07 11:42:43,799 - data_cleaning - INFO - [2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023]
+2023-10-07 11:42:49,914 - data_cleaning - INFO - sdg
+2023-10-07 11:42:49,914 - data_cleaning - INFO - [2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022]
+2023-10-07 11:49:26,519 - data_cleaning - INFO - FSI:
+2023-10-07 11:49:26,520 - data_cleaning - INFO - country_name    string[python]
+year                     Int64
+fsi_index              Float64
+dtype: object
+2023-10-07 11:51:53,715 - data_cleaning - INFO - FSI:
+2023-10-07 11:51:53,715 - data_cleaning - INFO - country_name    string[python]
+year                     Int64
+fsi_index              Float64
+dtype: object
+2023-10-07 11:52:25,852 - data_cleaning - INFO - FSI:
+2023-10-07 11:52:25,853 - data_cleaning - INFO - country_name    string[python]
+year                     Int64
+fsi_index              Float64
+dtype: object
+2023-10-07 11:52:25,854 - data_cleaning - INFO - country_name    0
+year            0
+fsi_index       0
+dtype: int64
+2023-10-07 11:53:42,315 - data_cleaning - DEBUG - 原始fsi_index数据集的列名:
+2023-10-07 11:53:42,315 - data_cleaning - DEBUG - Index(['Country', 'Year', 'Total'], dtype='object')
+2023-10-07 11:53:42,316 - data_cleaning - DEBUG - 修改之后的列名:
+2023-10-07 11:53:42,316 - data_cleaning - DEBUG - Index(['country_name', 'year', 'fsi_index'], dtype='object')
+2023-10-07 11:53:42,316 - data_cleaning - DEBUG - 原始值类型
+2023-10-07 11:53:42,317 - data_cleaning - DEBUG - country_name     object
+year              int64
+fsi_index       float64
+dtype: object
+2023-10-07 11:53:42,317 - data_cleaning - DEBUG - 修改之后的值类型
+2023-10-07 11:53:42,319 - data_cleaning - INFO - FSI:
+2023-10-07 11:53:42,320 - data_cleaning - INFO - country_name    string[python]
+year                     Int64
+fsi_index              Float64
+dtype: object
+2023-10-07 11:53:42,321 - data_cleaning - DEBUG - country_name    0
+year            0
+fsi_index       0
+dtype: int64
+2023-10-07 11:54:26,226 - data_cleaning - INFO - FSI:
+2023-10-07 11:54:26,226 - data_cleaning - INFO - country_name    string[python]
+year                     Int64
+fsi_index              Float64
+dtype: object
+2023-10-07 11:59:46,158 - data_cleaning - INFO - FSI:
+2023-10-07 11:59:46,159 - data_cleaning - INFO - country_name    string[python]
+year                     Int64
+fsi_index              Float64
+dtype: object
