@@ -3,12 +3,11 @@
 # @FileName: plot.py
 import pandas as pd
 import plotly.express as px
-import config
 import plotly.graph_objects as go
 
 
 def plot(country, y, board1, board2, save=False):
-    result = pd.read_csv(config.PROJECT_ROOT_URL + "cleaned_data/result_chinese.csv")
+    result = pd.read_csv("cleaned_data/result_chinese.csv")
     result = result[result['受援对象国'] == country]
     result_fig = px.line(
         result,

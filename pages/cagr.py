@@ -8,7 +8,6 @@ import streamlit as st
 import plot
 
 
-
 num = 20
 st.set_page_config(layout="wide")
 
