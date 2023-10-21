@@ -42,10 +42,11 @@ data_plot = st.selectbox(
 col1, col2, col3 = st.columns([0.5,2,2])
 if data_plot == '前20名国家':
     selected_data = top20['受援对象国'].tolist()
-
+    st.write(str(selected_data))
 
 else:
     selected_data = last20['受援对象国'].tolist()
+    st.write(str(selected_data))
 
 for index, name in enumerate(selected_data):
     # 创建多个按钮, 每个按钮对应一个国家, 默认显示第一个国家的数据
